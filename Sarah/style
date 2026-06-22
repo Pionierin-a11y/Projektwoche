@@ -1,0 +1,63 @@
+/* Container für die Positionierung auf dem Bildschirm */
+  #ui-container {
+    position: fixed;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: none; /* Wird per JS eingeblendet */
+  }
+
+  /* Der eigentliche Herz-Button */
+  .heart-button {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #ff2d55;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-45deg); /* Dreht das Quadrat, um die Herzspitze zu bilden */
+    outline: none;
+    animation: pulse 1.5s infinite; /* Pulsierender Effekt */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Die oberen Rundungen des Herzens (Abgerundete Ohren) */
+  .heart-button::before,
+  .heart-button::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #ff2d55;
+    border-radius: 50%;
+  }
+
+  .heart-button::before {
+    top: -30px;
+    left: 0;
+  }
+
+  .heart-button::after {
+    top: 0;
+    left: 30px;
+  }
+
+  /* Animation, damit das Herz lebendig wirkt */
+  @keyframes pulse {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.1); }
+    100% { transform: rotate(-45deg) scale(1); }
+  }
+
+  /* Zustand, wenn das Herz gedrückt wird */
+  .heart-button:active {
+    background-color: #cc0033;
+    animation: none;
+    transform: rotate(-45deg) scale(0.95);
+  }
+  .heart-button:active::before,
+  .heart-button:active::after {
+    background-color: #cc0033;
+  }
