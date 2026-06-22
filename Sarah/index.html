@@ -1,17 +1,88 @@
 
 <html>
   <head>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="mystyle.css">
     <script src="./script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  
+    <style>
+      /* Container für die Positionierung auf dem Bildschirm */
+  #ui-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /*transform: translateX(-50%);
+    z-index: 999;*/
+    display: none; /* Wird per JS eingeblendet */
+  }
+
+  /* Der eigentliche Herz-Button */
+  .heart-button {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #ff2d55;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-45deg); /* Dreht das Quadrat, um die Herzspitze zu bilden */
+    outline: none;
+    animation: pulse 1.5s infinite; /* Pulsierender Effekt */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Die oberen Rundungen des Herzens (Abgerundete Ohren) */
+  .heart-button::before,
+  .heart-button::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #ff2d55;
+    border-radius: 50%;
+  }
+
+  .heart-button::before {
+    top: -30px;
+    left: 0;
+  }
+
+  .heart-button::after {
+    top: 0;
+    left: 30px;
+  }
+
+  /* Animation, damit das Herz lebendig wirkt */
+  @keyframes pulse {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.1); }
+    100% { transform: rotate(-45deg) scale(1); }
+  }
+
+  /* Zustand, wenn das Herz gedrückt wird */
+  .heart-button:active {
+    background-color: #cc0033;
+    animation: none;
+    transform: rotate(-45deg) scale(0.95);
+  }
+  .heart-button:active::before,
+  .heart-button:active::after {
+    background-color: #cc0033;
+  }
+
+  h1{
+    color: #008800;
+  }
+    </style>
   </head>
 
   <body>
     <!-- UI Content -->
+     <h1>Testing</h1>
     <div id="ui-container">
-      <button id="actionButton" class="heart-button"></button>
+      <button id="actionButton" class="heart-button">Test</button>
     </div>
     <!-- AR Content -->
     <a-scene mindar-image="imageTargetSrc: https://raw.githubusercontent.com/Pionierin-a11y/Projektwoche/main/Sarah/targetsV1.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
