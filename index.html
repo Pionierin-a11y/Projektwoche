@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-AR Projektübersicht</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Abstand zwischen den Buttons */
+        }
+
+        .ar-button {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Spezialeffekt für Touch/Hover */
+        .ar-button:hover, .ar-button:active {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Web-AR Anwendungen</h1>
+        <p>Wähle ein Projekt aus, erlaube den Kamerazugriff und scanne dein Target-Bild!</p>
+
+        <div class="button-list">
+            <a href="./Amelie/index.html" class="ar-button">Amelies Projekt</a>
+            <a href="./Khola/index.html" class="ar-button">Kholas Projekt</a>
+            <a href="./Sarah/index.html" class="ar-button">Sarahs Projekt</a>
+            <a href="./Svenja/index.html" class="ar-button">Svenjas Projekt</a>
+            <a href="./Ziwen/index.html" class="ar-button">Ziwens Projekt</a>
+        </div>
+
+        <footer>
+            Erstellt für den interaktiven Workshop
+        </footer>
+    </div>
+
+</body>
+</html>
