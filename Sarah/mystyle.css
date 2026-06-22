@@ -1,0 +1,45 @@
+/* Verhindert unschöne Scrollbars auf dem Handy */
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Container für das GIF-Overlay */
+#ui-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Sorgt dafür, dass es ÜBER der AR-Szene liegt */
+    pointer-events: none; /* Klicks gehen standardmäßig durch den Container durch... */
+}
+
+/* Das interaktive GIF selbst */
+#ar-gif {
+    width: 200px; /* Breite anpassen wie gewünscht */
+    height: auto;
+    cursor: pointer;
+    pointer-events: auto; /* ...außer auf das GIF selbst, das ist klickbar! */
+    transition: transform 0.2s ease; /* Sanfter Übergang für CSS-Effekte */
+}
+
+/* Klasse zum Ausblenden */
+.hidden {
+    display: none !important;
+}
+
+/* --- HIER DIE ANIMATION DEFINIEREN --- */
+/* Beispiel: Ein Pulse-Effekt (Größer und kleiner werden) */
+.animate-gif {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
