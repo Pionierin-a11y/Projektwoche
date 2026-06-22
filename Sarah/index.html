@@ -1,40 +1,32 @@
-<!DOCTYPE html>
-<html lang="de">
+
+<html>
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>MindAR - GIF Overlay & Sound</title>
-      
-      <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-      
-      <link rel="stylesheet" href="mystyle.css?v=1.1">
+    <link rel="stylesheet" href="mystyle.css">
+    <script src="./script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
 
   <body>
-    <!-- Test -->
-    <div id="ui-container" class="hidden">
-      <img id="ar-gif" src="./Heart_Button.gif" alt="Interaktives GIF">
-    </div>
+    <h1 style="color:red;text-align:center;">Test<h1>
 
-    <audio id="ar-sound" src="./rain_sound.mp3" preload="auto"></audio>
-
-    <a-scene mindar-image="imageTargetSrc: targets.mind; uiScanning: #scanning-overlay;" 
-      embedded color-space="sRGB" 
-      renderer="colorManagement: true, physicallyCorrectLights" 
-      vr-mode-ui="enabled: false" 
-      device-orientation-permission-ui="enabled: false">
-        
-    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-    <a-entity id="mytarget" mindar-image-target="targetIndex: 0"></a-entity>
-          
+    <!-- AR Content -->
+    <a-scene mindar-image="imageTargetSrc: ./targetsV1.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+	      <img id="card" src="./Heart_Button.png" />
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane src="#card" position="0 0 0" rotation="0 0 0"></a-plane>
+      </a-entity>
     </a-scene>
-      <div id="scanning-overlay" class="mindar-ui-scanning">
-          <div>Scanne das Target-Bild...</div>
-      </div>
 
-      <script src="myscript.js?v=1.1"></script>
-
-  </body>
+    <div id="ui-container" style="position: fixed; bottom: 10%; left: 50%; transform: translateX(-50%); z-index: 999; display: none;">
+      <button id="actionButton" style="background: none; border:none; outline: none; cursor: pointer;">
+        <img src="./Heart_Button.gif" width="25%" height="25%">
+      </button>
+    <!--</div>
+    <button style="display: inline; position: fixed; top: 35%; left: 50%; transform: translateX(-50%); background: none; border:none; outline: none;"><img src="./Heart_Button.gif" width="25%" height="25%"></button>
+  </body>-->
 </html>
