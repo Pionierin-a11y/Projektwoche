@@ -1,0 +1,90 @@
+/* Verhindert unschöne Scrollbars auf dem Handy */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+/* Container für das GIF-Overlay */
+#ui-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Sorgt dafür, dass es ÜBER der AR-Szene liegt */
+    pointer-events: none; /* Klicks gehen standardmäßig durch den Container durch... */
+}
+
+/* Das interaktive GIF selbst */
+#ar-gif {
+    width: 200px; /* Breite anpassen wie gewünscht */
+    height: auto;
+    cursor: pointer;
+    pointer-events: auto; /* ...außer auf das GIF selbst, das ist klickbar! */
+    transition: transform 0.2s ease; /* Sanfter Übergang für CSS-Effekte */
+}
+
+/* Klasse zum Ausblenden */
+.hidden {
+    display: none !important;
+}
+
+/* --- HIER DIE ANIMATION DEFINIEREN --- */
+.animate-gif {
+    animation: Heart_Animation 12s forwards;
+}
+
+@keyframes Heart_Animation {
+    0%{
+        transform: scale(1);
+    }
+    33.33%{ 
+        transform: scale(1.5); 
+    }
+    66.66%{ 
+        transform: scale(1.5); 
+    }
+    100%{ 
+        transform: scale(1);
+    }
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-height: 90px;
+}
+
+#status{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    min-height: 35px; /* Verhindert, dass das Layout springt */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#countdown{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    height: 40px;
+}
+
+.fade-in{
+    animation: fadeInEffect 0.5s ease forwards;
+}
+
+@keyframes fadeInEffect {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
