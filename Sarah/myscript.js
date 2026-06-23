@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             clearInterval(timerInterval); // Zähler stoppen
             arGif.classList.remove('animate-gif');
-            changeText("Klicken hier zum durchatmen");
+            changeText("Klicke hier zum Durchatmen");
             countdown.innerText = ""; // Zahl ausblenden
         }, 12000);
 
