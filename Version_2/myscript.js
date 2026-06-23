@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const targetEntity = document.querySelector("#mytarget");
     const uiContainer = document.querySelector("#ui-container");
-    const arGif = document.querySelector("#ar-gif");
+    const arImg = document.querySelector("#ar-image");
     const arSound = document.querySelector("#ar-sound");
-    const statusText = document.getElementById('status');
-    const countdownText = document.getElementById('countdown');
+    const statusText = document.querySelector('status');
+    const countdownText = document.querySelector('countdown');
 
     let timerInterval;
 
@@ -37,34 +37,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
-    // 1. Wenn das Bild erkannt wird -> GIF anzeigen
+    // 1. Wenn das Bild erkannt wird -> Herz anzeigen
     targetEntity.addEventListener("targetFound", () => {
         console.log("Target gefunden!");
         uiContainer.classList.remove("hidden");
     });
     
-    // 2. Wenn das Bild aus dem Fokus verliert -> GIF ausblenden & aufräumen
+    // 2. Wenn das Bild aus dem Fokus verliert -> Herz ausblenden & aufräumen
     targetEntity.addEventListener("targetLost", () => {
         console.log("Target verloren!");
         uiContainer.classList.add("hidden");
         
         // Optional: Animation stoppen und Sound pausieren, wenn das Bild weg ist
-        arGif.classList.remove("animate-gif");
+        arImg.classList.remove("animate-img");
         arSound.pause();
         arSound.currentTime = 0; // Sound zurücksetzen
     });
 
     // 3. Klick-Event auf das GIF (Animation und Sound separat starten)
-    arGif.addEventListener("click", () => {
+    arImg.addEventListener("click", () => {
         console.log("GIF wurde geklickt!");
 
         // --- ANIMATION STARTEN ---
-        if (arGif.classList.contains('animate-gif')){
-            return;
-        }
-        else{
-            arGif.classList.add("animate-gif");
-        }
+        arImg.classList.add("animate-img");
         
         // --- ANIMATION TEXT ABSPIELEN ---
         // --- Start: Einatmen ---
@@ -84,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // --- Ende ---
         setTimeout(() => {
             clearInterval(timerInterval); // Zähler stoppen
-            arGif.classList.remove('animate-gif');
+            arImg.classList.remove('animate-gif');
             changeText("Klicken zum Starten");
             countdown.innerText = ""; // Zahl ausblenden
         }, 12000);
@@ -97,5 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
         arSound.play().catch(error => {
             console.error("Audio konnte nicht abgespielt werden:", error);
         });
+    });
+    
+    arImg.addEventListener("animationend", () => {
+        arImg.classList.remove("animate-img");
+        console.log("Animation beendet und zurückgesetzt.");
     });
 });
