@@ -24,7 +24,7 @@ body {
 }
 
 /* Das interaktive GIF selbst */
-#ar-gif {
+#ar-image {
     width: 200px; /* Breite anpassen wie gewünscht */
     height: auto;
     cursor: pointer;
@@ -38,7 +38,7 @@ body {
 }
 
 /* --- HIER DIE ANIMATION DEFINIEREN --- */
-.animate-gif {
+.animate-img {
     animation: Heart_Animation 12s forwards;
 }
 
